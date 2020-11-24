@@ -83,4 +83,4 @@ proxy-minio:
 
 proxy-nifi:
 	consul intention create -token=master nifi-local nifi
-	consul connect proxy -token master -service nifi-local -upstream nifi:8099 -log-level debug
+	consul connect proxy -token master -service nifi-local -upstream nifi:8080 -log-level debug
