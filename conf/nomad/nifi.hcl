@@ -1,14 +1,14 @@
 job "${service_name}" {
 
-  type = "service"
+  type        = "service"
   datacenters = ["${datacenters}"]
-  namespace     = "${namespace}"
+  namespace   = "${namespace}"
 
   group "servers" {
     count = 1
 
     service {
-      name = "nifi"
+      name = "${service_name}"
       port = "${port}"
 
       connect {
@@ -35,11 +35,10 @@ job "${service_name}" {
 
       template {
         data = <<EOH
-CONSUL_ADDRESS = "http://localhost:8500"
 N_CORES = "8"
 MAX_POOL_CON = 1
-NIFI_WEB_HTTP_HOST = 127.0.0.1
-NIFI_WEB_HTTP_PORT = 8182
+NIFI_WEB_HTTP_HOST = "${host}"
+NIFI_WEB_HTTP_PORT = "${port}"
 EOH
         destination = "local/config.env"
         env = true
