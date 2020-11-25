@@ -1,7 +1,8 @@
-job "nifi" {
+job "${service_name}" {
 
-  datacenters = ["dc1"]
   type = "service"
+  datacenters = ["${datacenters}"]
+  namespace     = "${namespace}"
 
   group "servers" {
     count = 1

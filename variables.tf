@@ -64,7 +64,7 @@ variable "use_host_volume" {
 }
 
 variable "use_canary" {
-  type = bool
+  type        = bool
   description = "Uses canary deployment for Nifi"
-  default = false
+  default     = false
 }
