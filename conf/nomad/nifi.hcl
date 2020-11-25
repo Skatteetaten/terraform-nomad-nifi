@@ -10,11 +10,11 @@ job "${service_name}" {
     min_healthy_time  = "10s"
     healthy_deadline  = "12m"
     progress_deadline = "15m"
-    %{ if use_canary }
+%{ if use_canary }
     canary            = 1
     auto_promote      = true
     auto_revert       = true
-    %{ endif }
+%{ endif }
     stagger           = "30s"
   }
 
