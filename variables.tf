@@ -71,11 +71,6 @@ variable "container_image" {
   default     = "apache/nifi:latest"
 }
 
-variable "container_environment_variables" {
-  type        = list(string)
-  description = "Additional Nifi container environment variables"
-  default     = []
-}
 variable "use_host_volume" {
   type        = bool
   description = "Switch for nomad jobs to use host volume feature"
