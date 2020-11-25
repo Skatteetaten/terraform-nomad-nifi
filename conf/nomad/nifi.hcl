@@ -12,13 +12,32 @@ job "${service_name}" {
       port = "${port}"
 
       connect {
-        sidecar_service {}
+        sidecar_service {
+          proxy {
+            expose {
+              path {
+                path            = "/nifi"
+                protocol        = "http"
+                local_path_port = ${port}
+                listener_port   = "expose_check"
+              }
+            }
+          }
+        }
         sidecar_task {
           resources {
             cpu     = "${cpu_proxy}"
             memory  = "${memory_proxy}"
           }
         }
+      }
+      check {
+        name      = "${service_name}-live"
+        type      = "http"
+        path      = "/nifi"
+        port      = "expose_check"
+        interval  = "10s"
+        timeout   = "3s"
       }
     }
 
