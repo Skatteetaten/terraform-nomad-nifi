@@ -33,23 +33,27 @@ variable "port" {
   description = "Nifi port"
   default     = 8182
 }
-
-variable "cpu" {
-  type        = number
-  description = "CPU allocation for Nifi"
-  default     = 200
+variable "resource" {
+  type = object({
+    cpu    = number,
+    memory = number
+  })
+  default = {
+    cpu    = 500,
+    memory = 1024
+  }
+  description = "Nifi resources. CPU and memory allocation."
+  validation {
+    condition     = var.resource.cpu >= 500 && var.resource.memory >= 1024
+    error_message = "Nifi resource must be at least: cpu=500, memory=1024."
+  }
 }
 
-variable "memory" {
-  type        = number
-  description = "Memory allocation for Nifi"
-  default     = 1024
-}
 
 variable "container_image" {
   type        = string
   description = "Nifi docker image"
-  default     = "apache/nifi:1.12.1"
+  default     = "apache/nifi:latest"
 }
 
 variable "container_environment_variables" {

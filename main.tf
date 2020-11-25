@@ -12,8 +12,8 @@ data "template_file" "nomad_job_nifi" {
     service_name    = var.service_name
     host            = var.host
     port            = var.port
-    cpu             = var.cpu
-    memory          = var.memory
+    cpu             = var.resource.cpu
+    memory          = var.resource.memory
     use_host_volume = var.use_host_volume
     use_canary      = var.use_canary
   }

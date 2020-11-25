@@ -1,15 +1,14 @@
-job "${service_name}" {
+job "nifi" {
 
+  datacenters = ["dc1"]
   type = "service"
-  datacenters = ["${datacenters}"]
-  namespace     = "${namespace}"
 
   group "servers" {
     count = 1
 
     service {
       name = "nifi"
-      port = "${port}"
+      port = 8182
 
       connect {
         sidecar_service {}
@@ -30,7 +29,7 @@ job "${service_name}" {
       driver = "docker"
 
       config {
-        image = "${image}"
+        image = "apache/nifi:1.12.1"
       }
 
       template {
@@ -45,8 +44,8 @@ EOH
         env = true
       }
       resources {
-        cpu     = "${cpu}"
-        memory  = "${memory}"
+        cpu = 500
+        memory = 2000
       }
     }
   }
