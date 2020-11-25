@@ -35,7 +35,6 @@ job "${service_name}" {
 
       template {
         data = <<EOH
-N_CORES = "8"
 MAX_POOL_CON = 1
 NIFI_WEB_HTTP_HOST = "${host}"
 NIFI_WEB_HTTP_PORT = "${port}"
