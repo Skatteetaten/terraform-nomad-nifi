@@ -14,6 +14,8 @@ data "template_file" "nomad_job_nifi" {
     port            = var.port
     cpu             = var.resource.cpu
     memory          = var.resource.memory
+    cpu_proxy       = var.resource_proxy.cpu
+    memory_proxy    = var.resource_proxy.memory
     use_host_volume = var.use_host_volume
     use_canary      = var.use_canary
   }

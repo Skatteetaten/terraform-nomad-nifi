@@ -48,6 +48,21 @@ variable "resource" {
     error_message = "Nifi resource must be at least: cpu=500, memory=1024."
   }
 }
+variable "resource_proxy" {
+  type = object({
+    cpu    = number,
+    memory = number
+  })
+  default = {
+    cpu    = 200,
+    memory = 128
+  }
+  description = "Nifi proxy resources"
+  validation {
+    condition     = var.resource_proxy.cpu >= 200 && var.resource_proxy.memory >= 128
+    error_message = "Proxy resource must be at least: cpu=200, memory=128."
+  }
+}
 
 
 variable "container_image" {

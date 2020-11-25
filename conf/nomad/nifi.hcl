@@ -15,8 +15,8 @@ job "${service_name}" {
         sidecar_service {}
         sidecar_task {
           resources {
-            cpu = 500
-            memory = 256
+            cpu     = "${cpu_proxy}"
+            memory  = "${memory_proxy}"
           }
         }
       }
