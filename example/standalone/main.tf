@@ -12,5 +12,9 @@ module "nifi" {
   port            = 8182
   container_image = "apache/nifi:1.12.1"
   use_host_volume = false
-  use_canary      = false
+  use_canary       = false
+  resource_proxy = {
+    cpu                  = 200
+    memory            = 128
+  }
 }
