@@ -21,17 +21,20 @@ variable "service_name" {
   description = "Nifi service name"
   default     = "nifi"
 }
-
 variable "host" {
   type        = string
   description = "Nifi host"
   default     = "127.0.0.1"
 }
-
 variable "port" {
   type        = number
   description = "Nifi port"
   default     = 8182
+}
+variable "container_image" {
+  type        = string
+  description = "Nifi docker image"
+  default     = "apache/nifi:latest"
 }
 variable "resource" {
   type = object({
@@ -63,14 +66,6 @@ variable "resource_proxy" {
     error_message = "Proxy resource must be at least: cpu=200, memory=128."
   }
 }
-
-
-variable "container_image" {
-  type        = string
-  description = "Nifi docker image"
-  default     = "apache/nifi:latest"
-}
-
 variable "use_host_volume" {
   type        = bool
   description = "Switch for nomad jobs to use host volume feature"
