@@ -22,7 +22,7 @@ This module is IaC - infrastructure as code which contains a nomad job of [Nifi]
 10. [References](#references)
 
 ## Prerequisites
-Please follow [this section in original template](https://github.com/fredrikhgrelland/vagrant-hashistack-template#install-prerequisites)
+Please follow [this section in original template](https://github.com/fredrikhgrelland/vagrant-hashistack-template#install-prerequisites).
 
 ## Compatibility
 |Software|OSS Version|Enterprise Version|
