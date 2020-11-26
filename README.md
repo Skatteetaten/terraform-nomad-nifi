@@ -11,14 +11,12 @@ This module is IaC - infrastructure as code which contains a nomad job of [Nifi]
 2. [Requirements](#requirements)
     1. [Required software](#required-software)
 3. [Usage](#usage)
-   1. [Providers](#providers)
-   2. [Intentions](#intentions)
-4. [Inputs](#inputs)
-5. [Outputs](#outputs)
-6. [Modes](#modes)
-7. [Example](#example)
-    1. [Verifying setup](#verifying-setup)
-        1. [Data example upload](#data-example-upload)
+   1. [Verifying setup](#verifying-setup)
+   2. [Providers](#providers)
+4. [Example](#example)
+5. [Inputs](#inputs)
+6. [Outputs](#outputs)
+7. [Modes](#modes)
 8. [Authors](#authors)
 9. [License](#license)
 10. [References](#references)
@@ -46,7 +44,7 @@ The following command will run nifi in the [example/standalone](example/standalo
 make up
 ```
 ### Verifying setup
-You can verify that Minio ran successful by checking the Nifi UI.
+You can verify that Nifi ran successful by checking the Nifi UI.
 
 First create a proxy to connect with the Nifi service:
 ```
