@@ -20,7 +20,12 @@ job "${service_name}" {
 
   group "servers" {
     count = 1
-
+    network {
+      mode = "bridge"
+      port "expose_check" {
+        to = -1
+      }
+    }
     service {
       name = "${service_name}"
       port = "${port}"
@@ -53,10 +58,6 @@ job "${service_name}" {
         interval  = "10s"
         timeout   = "3s"
       }
-    }
-
-    network {
-      mode = "bridge"
     }
 
     task "nifi" {
