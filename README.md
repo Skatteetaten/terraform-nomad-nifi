@@ -100,19 +100,6 @@ module "nifi" {
 
 ### Verifying setup
 
-You can verify the setup by connection to nifi using the Nomad UI at [localhost:4646](http://localhost:4646/). Follow the steps below.
-1. Locate and click the *nifi-metastore* service.
-2. Click the *exec* button and connect to the *metastoreserver* task.
-3. Run `beeline -u jdbc:nifi2://` to connect to nifi.
-4. Run `SHOW databases;`. Your output should look like this:
-```sh
-OK
-+----------------+
-| database_name  |
-+----------------+
-| default        |
-+----------------+
-```
 
 #### Data example upload
 Check [example/README.md#data-example-upload](example/README.md#data-example-upload)
