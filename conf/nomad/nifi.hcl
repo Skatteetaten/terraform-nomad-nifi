@@ -20,12 +20,7 @@ job "${service_name}" {
 
   group "servers" {
     count = 1
-    network {
-      mode = "bridge"
-      port "expose_check" {
-        to = -1
-      }
-    }
+
     service {
       name = "${service_name}"
       port = "${port}"
@@ -35,7 +30,7 @@ job "${service_name}" {
           proxy {
             expose {
               path {
-                path            = "/"
+                path            = "/nifi"
                 protocol        = "http"
                 local_path_port = ${port}
                 listener_port   = "expose_check"
@@ -53,11 +48,15 @@ job "${service_name}" {
       check {
         name      = "${service_name}-live"
         type      = "http"
-        path      = "/"
+        path      = "/nifi"
         port      = "expose_check"
         interval  = "10s"
         timeout   = "3s"
       }
+    }
+
+    network {
+      mode = "bridge"
     }
 
     task "nifi" {
