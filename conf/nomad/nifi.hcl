@@ -35,7 +35,7 @@ job "${service_name}" {
           proxy {
             expose {
               path {
-                path            = "/nifi"
+                path            = "/"
                 protocol        = "http"
                 local_path_port = ${port}
                 listener_port   = "expose_check"
@@ -53,7 +53,7 @@ job "${service_name}" {
       check {
         name      = "${service_name}-live"
         type      = "http"
-        path      = "/nifi"
+        path      = "/"
         port      = "expose_check"
         interval  = "10s"
         timeout   = "3s"
