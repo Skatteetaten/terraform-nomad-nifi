@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.1.0 UNRELEASED]
+## [0.1.1 UNRELEASED]
+
+### Added
+
+### Changed
+
+## [0.1.0]
 
 ### Added
 - Added 02_run_terraform.yml #6
