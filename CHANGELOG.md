@@ -5,6 +5,7 @@
 ### Added
 
 ### Changed
+- Removed unused files #19
 
 ## [0.1.0]
 
