@@ -77,3 +77,12 @@ variable "use_canary" {
   description = "Uses canary deployment for Nifi"
   default     = false
 }
+
+# Nifi registry
+/*variable "registry_service" {
+  type = object({
+    service_name = string,
+   // port         = number
+  })
+  description = "Nifi registry data-object contains service_name and port"
+}*/

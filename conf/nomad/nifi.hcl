@@ -33,6 +33,10 @@ job "${service_name}" {
       connect {
         sidecar_service {
           proxy {
+            upstreams {
+              destination_name = "${registry_service_name}"
+              local_bind_port  = "${registry_port}"
+            }
             expose {
               path {
                 path            = "/"
@@ -44,6 +48,9 @@ job "${service_name}" {
           }
         }
         sidecar_task {
+          config {
+          image = "envoyproxy/envoy:v1.11.2"
+          }
           resources {
             cpu     = "${cpu_proxy}"
             memory  = "${memory_proxy}"
