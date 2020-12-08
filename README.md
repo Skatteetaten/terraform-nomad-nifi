@@ -52,6 +52,12 @@ make proxy-nifi
 ```
 You can now visit the UI on [localhost:8182](http://localhost:8182).
 
+You can also create proxy to connect with the Nifi registry service:
+```
+make proxy-nifi-reg
+```
+You can now visit the UI on [http://127.0.0.1:18080/nifi-registry/](http://127.0.0.1:18080/nifi-registry/).
+
 ### Providers
 - [Nomad](https://registry.terraform.io/providers/hashicorp/nomad/latest/docs)
 - [Vault](https://registry.terraform.io/providers/hashicorp/vault/latest/docs)
@@ -92,6 +98,7 @@ module "nifi" {
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
 | use\_host\_volume | Switch to enable or disable host volume | bool | false | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
+| registry\_service | Nifi registry data-object contains service_name, port and host | obj(string, number, string) | no | no |
 
 ## Outputs
 | Name | Description | Type |

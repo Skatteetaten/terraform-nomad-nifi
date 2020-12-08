@@ -19,17 +19,15 @@ module "nifi" {
   }
 
   #nifi registry
-  registry_service_name = module.nifi_registry.nifi_reg_service_name
-  registry_port = 18080
-  //registry_host = "127.0.0.1"
- // registry_service = {
- //   service_name = module.nifi_registry.service_name
-   // port         = module.nifi_registry.port
-  //}
+  registry_service = {
+    service_name = module.nifi_registry.nifi_reg_service_name
+    port         = module.nifi_registry.nifi_reg_port
+    host         = module.nifi_registry.nifi_reg_host
+  }
 }
 
 module "nifi_registry" {
-  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=v0.1.0"
+  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.1.0"
 
   # nomad
   nomad_datacenters = ["dc1"]

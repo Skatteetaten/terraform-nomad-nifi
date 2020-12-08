@@ -79,10 +79,11 @@ variable "use_canary" {
 }
 
 # Nifi registry
-/*variable "registry_service" {
+variable "registry_service" {
   type = object({
     service_name = string,
-   // port         = number
+    port         = number,
+    host         = string
   })
-  description = "Nifi registry data-object contains service_name and port"
-}*/
+  description = "Nifi registry data-object contains service_name, port and host"
+}
