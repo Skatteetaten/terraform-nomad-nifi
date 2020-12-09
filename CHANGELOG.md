@@ -3,6 +3,8 @@
 ## [0.1.1 UNRELEASED]
 
 ### Added
+- Added upstream to nifi registry #26
+- Added make proxy-nifi-reg #26
 
 ### Changed
 - Removed unused files #19
