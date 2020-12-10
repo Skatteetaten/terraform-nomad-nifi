@@ -22,7 +22,7 @@ job "${service_name}" {
     count = 1
     network {
       mode = "bridge"
-      port "expose_check" {
+      port "expose_check1" {
         to = -1
       }
       port "expose_check2" {
