@@ -1,6 +1,8 @@
 # Changelog
 
 ## [0.1.1 UNRELEASED]
+### Added
+-  Added health check
 
 ### Added
 - Added upstream to nifi registry #26
