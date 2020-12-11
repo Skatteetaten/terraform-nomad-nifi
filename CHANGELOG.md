@@ -2,7 +2,7 @@
 
 ## [0.1.1 UNRELEASED]
 ### Added
--  Added health check
+- Added health checks for nifi service #17
 
 ### Added
 - Added upstream to nifi registry #26

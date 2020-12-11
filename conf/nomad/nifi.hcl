@@ -94,10 +94,10 @@ job "${service_name}" {
 
       template {
         data = <<EOH
-        MAX_POOL_CON = 1
-        NIFI_WEB_HTTP_HOST = "${host}"
-        NIFI_WEB_HTTP_PORT = "${port}"
-        EOH
+MAX_POOL_CON = 1
+NIFI_WEB_HTTP_HOST = "${host}"
+NIFI_WEB_HTTP_PORT = "${port}"
+EOH
         destination = "local/config.env"
         env = true
       }
