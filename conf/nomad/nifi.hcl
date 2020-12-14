@@ -22,7 +22,10 @@ job "${service_name}" {
     count = 1
     network {
       mode = "bridge"
-      port "expose_check" {
+      port "expose_check1" {
+        to = -1
+      }
+      port "expose_check2" {
         to = -1
       }
     }
@@ -39,11 +42,17 @@ job "${service_name}" {
             }
             expose {
               path {
-                path            = "/"
+                path            = "/nifi-api/system-diagnostics/"
                 protocol        = "http"
                 local_path_port = ${port}
-                listener_port   = "expose_check"
-              }
+                listener_port   = "expose_check1"
+                }
+              path {
+                path            = "/opt/nifi/"
+                protocol        = "http"
+                local_path_port = ${port}
+                listener_port   = "expose_check2"
+                }
             }
           }
         }
@@ -58,14 +67,23 @@ job "${service_name}" {
         }
       }
       check {
-        name      = "${service_name}-live"
+        name      = "${service_name}-api"
         type      = "http"
-        path      = "/"
-        port      = "expose_check"
+        path      = "/nifi-api/system-diagnostics/"
+        port      = "expose_check1"
         interval  = "10s"
         timeout   = "3s"
-      }
-    }
+        }
+      check {
+        name      = "${service_name}-live"
+        type      = "http"
+        path      = "/opt/nifi/"
+        port      = "expose_check2"
+        interval  = "10s"
+        timeout   = "3s"
+        }
+
+}
 
     task "nifi" {
       driver = "docker"
