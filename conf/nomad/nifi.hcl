@@ -61,8 +61,8 @@ job "${service_name}" {
                 protocol        = "http"
                 local_path_port = ${registry_port}
                 listener_port   = "expose_check3"
-                }
-            }
+                  }
+                 }
           }
         }
         sidecar_task {
@@ -91,6 +91,7 @@ job "${service_name}" {
         interval  = "10s"
         timeout   = "3s"
         }
+
       check {
         name     = "nifi-registry-live"
         type     = "http"
