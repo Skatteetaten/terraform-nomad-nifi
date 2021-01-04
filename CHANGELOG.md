@@ -21,3 +21,4 @@
 
 ### Changed
 - Update vagrant-box, `version = ">= 0.7, < 0.8"` #16
+- Update vagrant-box, `version = ">= 0.9, < 0.10"` #32
