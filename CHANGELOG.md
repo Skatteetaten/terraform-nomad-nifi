@@ -4,13 +4,12 @@
 ### Added
 - Added health checks for nifi service #17
 - Added health check for nifi-registry in nifi #28
-
-### Added
 - Added upstream to nifi registry #26
 - Added make proxy-nifi-reg #26
 
 ### Changed
 - Removed unused files #19
+- Update vagrant-box, `version = ">= 0.9, < 0.10"` #32
 
 ## [0.1.0]
 
@@ -21,4 +20,3 @@
 
 ### Changed
 - Update vagrant-box, `version = ">= 0.7, < 0.8"` #16
-- Update vagrant-box, `version = ">= 0.9, < 0.10"` #32
