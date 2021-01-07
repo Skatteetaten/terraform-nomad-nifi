@@ -8,8 +8,8 @@ job "${service_name}" {
     max_parallel      = 1
     health_check      = "checks"
     min_healthy_time  = "10s"
-    healthy_deadline  = "12m"
-    progress_deadline = "15m"
+    healthy_deadline  = "20m"
+    progress_deadline = "25m"
 %{ if use_canary }
     canary            = 1
     auto_promote      = true
