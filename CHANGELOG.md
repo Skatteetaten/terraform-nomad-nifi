@@ -1,6 +1,7 @@
 # Changelog
+## [0.2.0 UNRELEASED] 
 
-## [0.1.1 UNRELEASED]
+## [0.1.1]
 ### Added
 - Added health checks for nifi service #17
 - Added health check for nifi-registry in nifi #28
