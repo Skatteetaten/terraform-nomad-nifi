@@ -31,7 +31,6 @@ dev-standalone: update-box custom_ca
 dev: update-box custom_ca
 	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone_git\""' vagrant up --provision
 
-
 custom_ca:
 ifdef CUSTOM_CA
 	cp -f ${CUSTOM_CA} docker/conf/certificates/
@@ -90,10 +89,6 @@ pre-commit: check_for_docker_binary check_for_terraform_binary
 
 # consul-connect proxy to service
 # required binary `consul` https://releases.hashicorp.com/consul/
-proxy-minio:
-	consul intention create -token=master minio-local minio
-	consul connect proxy -token master -service minio-local -upstream minio:9000 -log-level debug
-
 proxy-nifi:
 	consul intention create -token=master nifi-local nifi
 	consul connect proxy -token master -service nifi-local -upstream nifi:8182 -log-level debug
