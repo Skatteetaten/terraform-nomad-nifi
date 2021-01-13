@@ -18,8 +18,9 @@ data "template_file" "nomad_job_nifi" {
     memory_proxy    = var.resource_proxy.memory
     use_host_volume = var.use_host_volume
     use_canary      = var.use_canary
+    mode            = var.mode
 
-  # nifi registry
+    # nifi registry
     registry_service_name = var.registry_service.service_name
     registry_port         = var.registry_service.port
   }

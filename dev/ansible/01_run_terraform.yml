@@ -1,6 +1,6 @@
-- name: Terraform
+- name: Terraform nifi
   terraform:
-    project_path: ../../example/standalone
+    project_path: ../../example/{{ mode }}
     force_init: true
     state: present
   register: terraform

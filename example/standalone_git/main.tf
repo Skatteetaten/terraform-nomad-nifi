@@ -13,6 +13,7 @@ module "nifi" {
   container_image = "apache/nifi:1.12.1"
   use_host_volume = false
   use_canary      = false
+  mode            = "standalone_git"
   resource_proxy = {
     cpu    = 200
     memory = 128
@@ -55,8 +56,8 @@ module "nifi_registry" {
   git_checkout_branch        = "master"
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
-  git_access_user            = "user"
-  git_access_password        = "thisisnotmypassword"
+  git_access_user            = "hannemariavister"
+  git_access_password        = "9378dc5b65a52f97ec13d8825fcf1b5ef28e8fe4"
   git_user_name              = "nifi-registry"
   git_user_email             = "nifi-registry@localhost"
 }
