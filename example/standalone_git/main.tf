@@ -13,7 +13,6 @@ module "nifi" {
   container_image = "apache/nifi:1.12.1"
   use_host_volume = false
   use_canary      = false
-  mode            = "standalone_git"
   resource_proxy = {
     cpu    = 200
     memory = 128
@@ -34,13 +33,11 @@ module "nifi_registry" {
   nomad_datacenters = ["dc1"]
   nomad_namespace   = "default"
 
-
   # nifi registry
   service_name    = "nifi-registry"
   host            = "127.0.0.1"
   port            = 18080
   container_image = "michalklempa/nifi-registry:0.8.0"
-  mode            = "standalone_git"
   use_canary      = false
   resource = {
     cpu    = 500

@@ -13,7 +13,6 @@ module "nifi" {
   container_image = "apache/nifi:1.12.1"
   use_host_volume = false
   use_canary      = false
-  mode            = "standalone"
   resource_proxy = {
     cpu    = 200
     memory = 128

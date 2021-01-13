@@ -78,16 +78,6 @@ variable "use_canary" {
   default     = false
 }
 
-variable "mode" {
-  type        = string
-  description = "Switch for nomad jobs to use standalone or standalone with NiFi Registry integrated with GIT deployment"
-  default     = "standalone"
-  validation {
-    condition     = var.mode == "standalone" || var.mode == "standalone_git"
-    error_message = "Valid modes: \"standalone\" or \"standalone_git\"."
-  }
-}
-
 # Nifi registry
 variable "registry_service" {
   type = object({
