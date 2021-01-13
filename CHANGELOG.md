@@ -1,5 +1,15 @@
 # Changelog
 ## [0.2.0 UNRELEASED] 
+### Added
+- Created a new example `standalone_git` with NiFi container connected to a NiFi Registry container with git integration (Github) #35
+
+### Changed
+- Updated Makefile to execute example `standalone` or `standalone_git`#35
+- Updated `Vagrantfile` and `dev/ansible/01_run_terraform.yml` to handle input argument `mode` from Makefile.
+
+### Deleted
+- Deleted unused files in repo `terraform-nomad-nifi` #40
+- Refactor structure #40
 
 ## [0.1.1]
 ### Added
