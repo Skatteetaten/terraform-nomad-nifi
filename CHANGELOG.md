@@ -9,7 +9,7 @@
 
 ### Deleted
 - Deleted unused files in repo `terraform-nomad-nifi` #40
-- Refactor structure #40
+- Refactored structure #40
 
 ## [0.1.1]
 ### Added
