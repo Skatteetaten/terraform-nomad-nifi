@@ -39,10 +39,16 @@ All software is provided and run with docker.
 See the [Makefile](Makefile) for inspiration.
 
 ## Usage
-The following command will run nifi in the [example/standalone](example/standalone) folder.
+The following command will run NiFI in the [example/standalone_git](example/standalone_git) folder. (__NOTE!__ Please read [README.md i](example/standalone_git/README.md) before executing the example)
 ```sh
 make up
 ```
+and
+```sh
+make up-standalone
+```
+will run NiFi in the [example/standalone](example/standalone) folder.
+
 ### Verifying setup
 You can verify that Nifi ran successful by checking the Nifi UI.
 

@@ -1,0 +1,10 @@
+- name: Terraform nifi {{ mode }}
+  terraform:
+    project_path: ../../example/{{ mode }}
+    force_init: true
+    state: present
+  register: terraform
+
+- name: Terraform nifi {{ mode }} stdout
+  debug:
+    msg: "{{terraform.stdout}}"
