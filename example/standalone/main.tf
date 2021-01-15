@@ -9,6 +9,7 @@ module "nifi" {
   service_name    = "nifi"
   host            = "127.0.0.1"
   port            = 8182
+  mode            = "standalone"
   container_image = "apache/nifi:1.12.1"
   use_canary      = false
   resource_proxy = {
