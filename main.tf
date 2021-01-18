@@ -7,7 +7,6 @@ data "template_file" "nomad_job_nifi" {
   vars = {
     datacenters     = local.datacenters
     namespace       = var.nomad_namespace
-    host_volume     = var.nomad_host_volume
     image           = var.container_image
     service_name    = var.service_name
     host            = var.host
@@ -16,7 +15,6 @@ data "template_file" "nomad_job_nifi" {
     memory          = var.resource.memory
     cpu_proxy       = var.resource_proxy.cpu
     memory_proxy    = var.resource_proxy.memory
-    use_host_volume = var.use_host_volume
     use_canary      = var.use_canary
 
     # nifi registry
