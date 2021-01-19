@@ -111,8 +111,8 @@ jobs:
           test_hashicorp_binary: ${{ matrix.hashicorp_binary }}
 
       - name: set master token (random)
-          id: master_token
-          run: |
+        id: master_token
+        run: |
             echo "ENVKEY_nomad_master_token=random" >> $GITHUB_ENV
             echo "ENVKEY_consul_master_token=random" >> $GITHUB_ENV
             echo "ENVKEY_vault_master_token=random" >> $GITHUB_ENV
