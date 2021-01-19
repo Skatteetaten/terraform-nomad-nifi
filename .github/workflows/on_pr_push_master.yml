@@ -9,6 +9,7 @@ on:
 jobs:
   linter:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v2
       - name: Super-Linter
