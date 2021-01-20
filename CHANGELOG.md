@@ -1,18 +1,21 @@
 # Changelog
-## [0.2.0 UNRELEASED] 
+
+## [0.4.0 UNRELEASED]
+
+## [0.3.0 ] 
 ### Added
 - Created a new example `standalone_git` with NiFi container connected to a NiFi Registry container with git integration (Github) #35
 - Created README in standalone #38
 ### Changed
 - Updated Makefile to execute example `standalone` or `standalone_git`#35
-- Updated `Vagrantfile` and `dev/ansible/01_run_terraform.yml` to handle input argument `mode` from Makefile.
+- Updated `Vagrantfile` and `dev/ansible/01_run_terraform.yml` to handle input argument `mode` from Makefile. #35
 
 ### Deleted
 - Deleted unused files in repo `terraform-nomad-nifi` #40
 - Refactored structure #40
-- Remove unused variables as nomad_host_volume and use_host_volume #38
+- Removed unused variables as nomad_host_volume and use_host_volume #38
 
-## [0.1.1]
+## [0.2.0]
 ### Added
 - Added health checks for nifi service #17
 - Added health check for nifi-registry in nifi #28
