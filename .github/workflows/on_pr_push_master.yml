@@ -140,7 +140,7 @@ jobs:
           FILE_NAME: .env_override
 
       - name: Run make test
-        timeout-minutes: 5
+       # timeout-minutes: 5
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test
 
