@@ -141,7 +141,7 @@ jobs:
 
       - name: Run make test
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
-        timeout-minutes: 60
+        command_timeout: 200m
         run: make test
 
   release-prerequisites:
