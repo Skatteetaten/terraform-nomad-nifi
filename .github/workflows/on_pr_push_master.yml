@@ -3,6 +3,8 @@ on:
   pull_request:
     branches: [ master ]
     types: [ opened, synchronize, reopened, edited, closed, labeled, unlabeled ]
+  schedule:
+    - cron: "0 1 * * *"
   push:
     branches: [ master ]
 
@@ -44,9 +46,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  test:
-    runs-on: macos-latest
+  pre_job:
+    needs: linter
+    # continue-on-error: true # Uncomment once integration is finished
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          paths_ignore: '["**/README.md"]'
 
+  test:
+    needs: pre_job
+    if: |
+      ${{ needs.pre_job.outputs.should_skip != 'true' }} ||
+      contains(github.event.pull_request.labels.*.name, 'major') ||
+      contains(github.event.pull_request.labels.*.name, 'minor') ||
+      contains(github.event.pull_request.labels.*.name, 'patch')
+    runs-on: macos-latest
     strategy:
       matrix:
         consul_acl: [ "consul_acl_enabled", "consul_acl_disabled" ]
@@ -140,7 +161,6 @@ jobs:
           FILE_NAME: .env_override
 
       - name: Run make test
-        timeout-minutes: 60
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test
 
@@ -149,10 +169,10 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'major') ||
       contains(github.event.pull_request.labels.*.name, 'minor') ||
       contains(github.event.pull_request.labels.*.name, 'patch')
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       bump: ${{ steps.bump.outputs.match }}
-      next_version: ${{ steps.next_version.outputs.version }}
+      next_version: ${{ steps.split_tag.outputs._0 }}
       log_entry: ${{ steps.changelog_reader.outputs.log_entry }}
 
     steps:
@@ -163,12 +183,19 @@ jobs:
         with:
           allowed: major,minor,patch
 
-      - id: next_version
-        uses: zwaldowski/semver-release-action@v1
+      - name: Get tag next version
+        id: next_version
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: ${{ steps.bump.outputs.match }}
+          DRY_RUN: true
+
+      - uses: rishabhgupta/split-by@v1
+        id: split_tag
         with:
-          dry_run: true
-          bump: ${{ steps.bump.outputs.match }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          string: ${{ steps.next_version.outputs.new_tag }}
+          split-by: '-'
 
       - name: Find and replace
         run: python .github/action/find-replace.py
@@ -204,3 +231,16 @@ jobs:
             ${{ needs.release-prerequisites.outputs.log_entry }}
           draft: false
           prerelease: false
+
+      - name: Create follow up issue to update minio-module version in other modules that use it
+        uses: maxkomarychev/oction-create-issue@v0.7.1
+        id: create_issue
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "Update modules in the repos to use the latest released minio-module"
+          body: |
+            Update modules in the following repos to use the latest released minio-module:
+              - [ ]  https://github.com/fredrikhgrelland/terraform-nomad-presto
+              - [ ]  https://github.com/fredrikhgrelland/terraform-nomad-hive
+      - name: Print Id of the newly created issue
+        run: echo ${{ steps.my_step_id.create_issue.number }}
