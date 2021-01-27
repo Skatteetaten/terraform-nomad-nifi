@@ -1,37 +1,3 @@
-  Skip to content
-    Search or jump to…
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @AditiSharma77
-    fredrikhgrelland
-    /
-    vagrant-hashistack
-    6
-    12
-    6
-    Code
-    Issues
-    9
-    Pull requests
-    Discussions
-    Actions
-    Projects
-    Wiki
-    Security
-    Insights
-    vagrant-hashistack/.github/workflows/on_pr_master.yml
-    @dangernil
-    dangernil Running tests with random token
-    Latest commit 70623d5 on Nov 12, 2020
-    History
-    6 contributors
-    @fredrikhgrelland@Neha-Sinha2305@pdmthorsrud@zhenik@claesgill@dangernil
-    297 lines (268 sloc)  9.43 KB
-
   name: CI-CD
   on:
     push:
