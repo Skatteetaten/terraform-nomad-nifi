@@ -96,3 +96,19 @@ proxy-nifi:
 proxy-nifi-reg:
 	consul intention create -token=master nifi-registry-local nifi-registry
 	consul connect proxy -token master -service nifi-registry-local -upstream nifi-registry:18080 -log-level debug
+
+up-test: update-box custom_ca
+ifeq ($(GITHUB_ACTIONS),true) # Always set to true when GitHub Actions is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub Actions.
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
+else
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
+endif
+
+check-params:
+	@[ "${repo}" ] || ( echo ">> The parameter repo is not defined" )
+	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined" )
+	@[ "${user}" ] || ( echo ">> The parameter user is not defined")
+	@[ "${token}" ] || ( echo ">> The parameter token is not defined" )
+	exit 1
+
+
