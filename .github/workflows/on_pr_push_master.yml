@@ -9,6 +9,7 @@ on:
 jobs:
   linter:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v2
       - name: Super-Linter
@@ -140,6 +141,7 @@ jobs:
           FILE_NAME: .env_override
 
       - name: Run make test
+        timeout-minutes: 40
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test
 
