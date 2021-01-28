@@ -3,8 +3,6 @@
 ## [0.4.0 UNRELEASED]
 
 ## [0.3.0 ] 
-- fixing bug
-
 ### Added
 - Created a new example `standalone_git` with NiFi container connected to a NiFi Registry container with git integration (Github) #35
 - Created README in standalone #38
