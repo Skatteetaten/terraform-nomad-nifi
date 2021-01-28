@@ -139,9 +139,10 @@ jobs:
           ENVKEY_vault_enterprise: ${{ steps.hashicorp_binary.outputs.vault_enterprise }}
           FILE_NAME: .env_override
 
-      - name: Run make test
+      - name: Run make test HMV
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test
+        timeout-minutes: 10
 
   release-prerequisites:
     if: |
