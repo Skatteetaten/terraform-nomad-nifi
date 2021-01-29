@@ -25,7 +25,7 @@ module "nifi" {
 }
 
 module "nifi_registry" {
-  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.2.0"
+  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.3.0"
 
   # nomad
   nomad_datacenters = ["dc1"]

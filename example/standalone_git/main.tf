@@ -25,7 +25,7 @@ module "nifi" {
 }
 
 module "nifi_registry" {
-  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.2.0"
+  source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.3.0"
 
   # nomad
   nomad_datacenters = ["dc1"]
@@ -54,12 +54,8 @@ module "nifi_registry" {
     vault_kv_field_password = "git_access_password"
   }
   # Git version control configuration
- // git_remote_url             = "{{ key "github/repo" }}" //"https://github.com/hannemariavister/versioned_flows.git"
-//  git_checkout_branch        = "{{ key "github/branch" }}" //"master"
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
-//  git_access_user            = "{{ .Data.data.${vault_kv_field_user} }}" //"user"
-//  git_access_password        = "{{ .Data.data.${vault_kv_field_password} }}" //"thisisnotmypassword"
   git_user_name              = "nifi-registry"
   git_user_email             = "nifi-registry@localhost"
 }
