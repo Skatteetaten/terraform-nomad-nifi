@@ -39,7 +39,7 @@ All software is provided and run with docker.
 See the [Makefile](Makefile) for inspiration.
 
 ## Usage
-The following command will run NiFI in the [example/standalone_git](example/standalone_git) folder. (__NOTE!__ Please read [README.md i](example/standalone_git/README.md) before executing the example)
+The following command will run NiFI in the [example/standalone_git](example/standalone_git) folder. (__NOTE!__ Please read [README.md](example/standalone_git/README.md) before executing the example)
 ```sh
 make up repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub> 
 ```
