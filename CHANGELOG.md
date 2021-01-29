@@ -1,7 +1,7 @@
 # Changelog
 
 ## [0.4.0 UNRELEASED]
-
+- Changed
 ## [0.3.0 ] 
 ### Added
 - Created a new example `standalone_git` with NiFi container connected to a NiFi Registry container with git integration (Github) #35
