@@ -12,7 +12,7 @@ Before running the example, these variables must be set beforehand.
 | `git_access_user`  | " "  | Yes | GitHub Username |
 | `git_access_password`  | " "  | Yes | [Personal token from GitHub](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)|
 | `git_user_name`  | nifi-registry  | No | Developer|
-| `git_user_email`  | nifi-registry@localhost  | No | Developer email|
+| `git_user_email`  | nifi-registry@localhost  | No | Developers email|
 
 The variables marked with `Yes` in the column `Defined from CLI` must be pass as arguments from the command line.
 The variable names have been abbreviated, such as:

@@ -104,6 +104,11 @@ module "nifi" {
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
 | use\_host\_volume | Switch to enable or disable host volume | bool | false | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
+| vault_secret.use_vault_provider | Set if want to access secrets from Vault | bool | true | no |
+| vault_secret.vault_kv_policy_name | Vault policy name to read secrets | string | "kv-secret" | no |
+| vault_secret.vault_kv_path | Path to the secret key in Vault | string | "secret/data/minio" | no |
+| vault_secret.vault_kv_field_access_key | Secret key name in Vault kv path | string | "access_key" | no |
+| vault_secret.vault_kv_field_secret_key | Secret key name in Vault kv path | string | "secret_key" | no |
 | registry\_service | Nifi registry data-object contains service_name, port and host | obj(string, number, string) | no | no |
 
 ## Outputs
