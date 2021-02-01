@@ -5,7 +5,7 @@
 ## [0.4.0 UNRELEASED]
 ### Added
 - Customized Makefile to receive arguments for GitHub authentication #50
-- Added secrets (GitHub user and GitHub personal token) to Vault by Ansible playbooks (`terraform-nomad-nifiregistry/dev/ansible` ) #50
+- Added secrets (GitHub user and GitHub personal token) to Vault by Ansible playbooks (`terraform-nomad-nifi/dev/ansible` ) #50
 - Added variables (repo and branch) to Consul Key Value Store #50
 
 ### Updated

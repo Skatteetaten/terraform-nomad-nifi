@@ -31,8 +31,8 @@ dev-standalone: update-box custom_ca
 # Builds a vagrant box (included Ansible playbooks) for example/standalone_git, without running the tests.
 # Remember the parameters for GIT integration explained in /example/standalone_git/README.md
 # Example: make dev repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub>
-dev: update-box custom_ca
-	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone_git\""' vagrant up --provision
+dev: check-params update-box custom_ca
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
 
 custom_ca:
 ifdef CUSTOM_CA
