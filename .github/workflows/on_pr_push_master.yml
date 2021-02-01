@@ -54,7 +54,7 @@ jobs:
 #        nomad_acl: [ "nomad_acl_enabled", "nomad_acl_disabled" ]
 #        hashicorp_binary: [ "hashicorp_oss", "hashicorp_enterprise" ]
 #
-#    steps:
+    steps:
 #      - uses: actions/checkout@v2
 #
 #      - name: set consul acl (enabled/disabled)
