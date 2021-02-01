@@ -8,8 +8,8 @@ job "nifi" {
     max_parallel      = 1
     health_check      = "checks"
     min_healthy_time  = "10s"
-    healthy_deadline  = "12m"
-    progress_deadline = "15m"
+    healthy_deadline  = "55m"
+    progress_deadline = "1h"
     stagger           = "30s"
   }
 
@@ -84,6 +84,8 @@ job "nifi" {
 
       config {
         image = "apache/nifi:1.12.1"
+        image_pull_timeout = "55m"
+
       }
 
       template {
