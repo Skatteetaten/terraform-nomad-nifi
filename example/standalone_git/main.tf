@@ -1,28 +1,28 @@
-module "nifi" {
-  source = "../.."
-
-  # nomad
-  nomad_datacenters = ["dc1"]
-  nomad_namespace   = "default"
-
-  # nifi
-  service_name    = "nifi"
-  host            = "127.0.0.1"
-  port            = 8182
-  container_image = "apache/nifi:1.12.1"
-  use_canary      = false
-  resource_proxy = {
-    cpu    = 200
-    memory = 128
-  }
-
-  #nifi registry
-  registry_service = {
-    service_name = module.nifi_registry.nifi_reg_service_name
-    port         = module.nifi_registry.nifi_reg_port
-    host         = module.nifi_registry.nifi_reg_host
-  }
-}
+//module "nifi" {
+//  source = "../.."
+//
+//  # nomad
+//  nomad_datacenters = ["dc1"]
+//  nomad_namespace   = "default"
+//
+//  # nifi
+//  service_name    = "nifi"
+//  host            = "127.0.0.1"
+//  port            = 8182
+//  container_image = "apache/nifi:1.12.1"
+//  use_canary      = false
+//  resource_proxy = {
+//    cpu    = 200
+//    memory = 128
+//  }
+//
+//  #nifi registry
+//  registry_service = {
+//    service_name = module.nifi_registry.nifi_reg_service_name
+//    port         = module.nifi_registry.nifi_reg_port
+//    host         = module.nifi_registry.nifi_reg_host
+//  }
+//}
 
 module "nifi_registry" {
   source = "github.com/hannemariavister/terraform-nomad-nifiregistry?ref=0.2.0"

@@ -46,86 +46,86 @@ jobs:
 
   test:
     runs-on: macos-latest
-#
-#    strategy:
-#      matrix:
-#        consul_acl: [ "consul_acl_enabled", "consul_acl_disabled" ]
-#        consul_acl_default_policy: [ "consul_acl_deny" ]
-#        nomad_acl: [ "nomad_acl_enabled", "nomad_acl_disabled" ]
-#        hashicorp_binary: [ "hashicorp_oss", "hashicorp_enterprise" ]
-#
+
+    strategy:
+      matrix:
+        consul_acl: [ "consul_acl_enabled", "consul_acl_disabled" ]
+        consul_acl_default_policy: [ "consul_acl_deny" ]
+        nomad_acl: [ "nomad_acl_enabled", "nomad_acl_disabled" ]
+        hashicorp_binary: [ "hashicorp_oss", "hashicorp_enterprise" ]
+
     steps:
       - uses: actions/checkout@v2
-#
-#      - name: set consul acl (enabled/disabled)
-#        id: consul_acl
-#        run: |
-#          if [ "$test_consul_acl" == 'consul_acl_enabled' ]
-#          then
-#              echo "ENVKEY_consul_acl=true" >> $GITHUB_ENV
-#          else
-#              echo "ENVKEY_consul_acl=false" >> $GITHUB_ENV
-#          fi
-#        env:
-#          test_consul_acl: ${{ matrix.consul_acl }}
-#
-#      - name: set consul acl default policy (allow/deny)
-#        id: consul_acl_default_policy
-#        run: |
-#          if [ "$test_consul_acl_default_policy" == 'consul_acl_allow' ]
-#          then
-#              echo "ENVKEY_consul_acl_default_policy=allow" >> $GITHUB_ENV
-#          else
-#              echo "ENVKEY_consul_acl_default_policy=deny" >> $GITHUB_ENV
-#          fi
-#        env:
-#          test_consul_acl_default_policy: ${{ matrix.consul_acl_default_policy }}
-#
-#      - name: set nomad acl (enabled/disabled)
-#        id: nomad_acl
-#        run: |
-#          if [ "$test_nomad_acl" == 'nomad_acl_enabled' ]
-#          then
-#              echo "ENVKEY_nomad_acl=true" >> $GITHUB_ENV
-#          else
-#              echo "ENVKEY_nomad_acl=false" >> $GITHUB_ENV
-#          fi
-#        env:
-#          test_nomad_acl: ${{ matrix.nomad_acl }}
-#
-#      - name: set hashicorp binary (oss/enterprise)
-#        id: hashicorp_binary
-#        run: |
-#          if [ "$test_hashicorp_binary" == 'hashicorp_oss' ]
-#          then
-#              echo "ENVKEY_consul_enterprise=false" >> $GITHUB_ENV
-#              echo "ENVKEY_nomad_enterprise=false" >> $GITHUB_ENV
-#              echo "ENVKEY_vault_enterprise=false" >> $GITHUB_ENV
-#          else
-#              echo "ENVKEY_consul_enterprise=true" >> $GITHUB_ENV
-#              echo "ENVKEY_nomad_enterprise=true" >> $GITHUB_ENV
-#              echo "ENVKEY_vault_enterprise=true" >> $GITHUB_ENV
-#          fi
-#        env:
-#          test_hashicorp_binary: ${{ matrix.hashicorp_binary }}
-#
-#      - name: Make .env_override in template_example dir in order to matrix test
-#        if: github.repository == 'fredrikhgrelland/vagrant-hashistack-template'
-#        run: python .github/action/create-env.py
-#        env:
-#          ENVKEY_env_override: true
-#          FILE_NAME: template_example/.env_override
-#
-#      - name: Run make template_example
-#        if: github.repository == 'fredrikhgrelland/vagrant-hashistack-template'
-#        run: make template_example
-#
-#      - name: Make .env_override in template dir in order to matrix test
-#        if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
-#        run: python .github/action/create-env.py
-#        env:
-#          ENVKEY_env_override: true
-#          FILE_NAME: .env_override
+
+      - name: set consul acl (enabled/disabled)
+        id: consul_acl
+        run: |
+          if [ "$test_consul_acl" == 'consul_acl_enabled' ]
+          then
+              echo "ENVKEY_consul_acl=true" >> $GITHUB_ENV
+          else
+              echo "ENVKEY_consul_acl=false" >> $GITHUB_ENV
+          fi
+        env:
+          test_consul_acl: ${{ matrix.consul_acl }}
+
+      - name: set consul acl default policy (allow/deny)
+        id: consul_acl_default_policy
+        run: |
+          if [ "$test_consul_acl_default_policy" == 'consul_acl_allow' ]
+          then
+              echo "ENVKEY_consul_acl_default_policy=allow" >> $GITHUB_ENV
+          else
+              echo "ENVKEY_consul_acl_default_policy=deny" >> $GITHUB_ENV
+          fi
+        env:
+          test_consul_acl_default_policy: ${{ matrix.consul_acl_default_policy }}
+
+      - name: set nomad acl (enabled/disabled)
+        id: nomad_acl
+        run: |
+          if [ "$test_nomad_acl" == 'nomad_acl_enabled' ]
+          then
+              echo "ENVKEY_nomad_acl=true" >> $GITHUB_ENV
+          else
+              echo "ENVKEY_nomad_acl=false" >> $GITHUB_ENV
+          fi
+        env:
+          test_nomad_acl: ${{ matrix.nomad_acl }}
+
+      - name: set hashicorp binary (oss/enterprise)
+        id: hashicorp_binary
+        run: |
+          if [ "$test_hashicorp_binary" == 'hashicorp_oss' ]
+          then
+              echo "ENVKEY_consul_enterprise=false" >> $GITHUB_ENV
+              echo "ENVKEY_nomad_enterprise=false" >> $GITHUB_ENV
+              echo "ENVKEY_vault_enterprise=false" >> $GITHUB_ENV
+          else
+              echo "ENVKEY_consul_enterprise=true" >> $GITHUB_ENV
+              echo "ENVKEY_nomad_enterprise=true" >> $GITHUB_ENV
+              echo "ENVKEY_vault_enterprise=true" >> $GITHUB_ENV
+          fi
+        env:
+          test_hashicorp_binary: ${{ matrix.hashicorp_binary }}
+
+      - name: Make .env_override in template_example dir in order to matrix test
+        if: github.repository == 'fredrikhgrelland/vagrant-hashistack-template'
+        run: python .github/action/create-env.py
+        env:
+          ENVKEY_env_override: true
+          FILE_NAME: template_example/.env_override
+
+      - name: Run make template_example
+        if: github.repository == 'fredrikhgrelland/vagrant-hashistack-template'
+        run: make template_example
+
+      - name: Make .env_override in template dir in order to matrix test
+        if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
+        run: python .github/action/create-env.py
+        env:
+          ENVKEY_env_override: true
+          FILE_NAME: .env_override
 
       - name: Run make test HMV copy from hashistack template
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
