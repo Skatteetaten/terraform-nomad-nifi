@@ -19,7 +19,7 @@ module "nifi" {
   #nifi registry
   registry_service = {
     service_name = "nifi-registry"
-    port         = "18080"
+    port         = 18080
     host         = "100"
   }
 }
