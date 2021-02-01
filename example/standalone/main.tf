@@ -17,11 +17,11 @@ module "nifi" {
   }
 
   #nifi registry
-//  registry_service = {
-//    service_name = module.nifi_registry.nifi_reg_service_name
-//    port         = module.nifi_registry.nifi_reg_port
-//    host         = module.nifi_registry.nifi_reg_host
-//  }
+  registry_service = {
+    service_name = "nifi-registry"
+    port         = "18080"
+    host         = "100"
+  }
 }
 
 //module "nifi_registry" {
