@@ -2,7 +2,7 @@
 
 ## [0.4.1 UNRELEASED]
 
-## [0.4.0 UNRELEASED]
+## [0.4.0]
 ### Added
 - Customized Makefile to receive arguments for GitHub authentication #50
 - Added secrets (GitHub user and GitHub personal token) to Vault by Ansible playbooks (`terraform-nomad-nifi/dev/ansible` ) #50
