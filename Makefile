@@ -63,7 +63,7 @@ check-params:
 	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined. branch=<branch to checkout and track>")
 	@[ "${user}" ] || (  echo ">> The parameter user is not defined. user=<GitHub username>")
 	@[ "${token}" ] || ( echo ">> The parameter token is not defined. token=<personal token from GitHub" )
-	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (echo "See README.md for more details and example: https://github.com/hannemariavister/terraform-nomad-nifiregistry/blob/master/example/standalone_git/README.md" ; exit 1 )
+	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (echo "See README.md for more details and example: https://github.com/hannemariavister/terraform-nomad-nifi/blob/master/example/standalone_git/README.md" ; exit 1 )
 
 # Runs through your Ansible Playbook tests and builds up /example/standalone
 test-standalone: clean up-standalone
@@ -114,5 +114,4 @@ proxy-nifi:
 proxy-nifi-reg:
 	consul intention create -token=master nifi-registry-local nifi-registry
 	consul connect proxy -token master -service nifi-registry-local -upstream nifi-registry:18080 -log-level debug
-
 
