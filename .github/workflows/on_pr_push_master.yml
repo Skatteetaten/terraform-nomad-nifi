@@ -130,7 +130,7 @@ jobs:
       - name: Run make test HMV copy from hashistack template
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         timeout-minutes: 55
-        run: make test
+        run: make test-standalone
 
   release-prerequisites:
     if: |
