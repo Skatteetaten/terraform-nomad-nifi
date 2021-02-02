@@ -23,4 +23,3 @@ module "nifi" {
     host         = "100"
   }
 }
-}
