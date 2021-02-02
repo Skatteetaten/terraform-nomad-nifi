@@ -50,9 +50,6 @@ job "nifi" {
           }
         }
         sidecar_task {
-          config {
-          image = "envoyproxy/envoy:v1.11.2"
-          }
           resources {
             cpu     = 200
             memory  = 128
