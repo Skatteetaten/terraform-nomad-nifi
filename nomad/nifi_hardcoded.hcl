@@ -17,7 +17,9 @@ job "nifi" {
     count = 1
     network {
       mode = "bridge"
-
+      port "expose_check1" {
+        to = -1
+      }
     }
 
     service {
@@ -27,6 +29,14 @@ job "nifi" {
       connect {
         sidecar_service {
           proxy {
+            expose {
+              path {
+                path            = "/opt/nifi/"
+                protocol        = "http"
+                local_path_port = 8081
+                listener_port   = "expose_check1"
+                }
+            }
           }
         }
         sidecar_task {
@@ -36,6 +46,14 @@ job "nifi" {
           }
         }
       }
+      check {
+        name      = "nifi-api"
+        type      = "http"
+        path      = "/opt/nifi/"
+        port      = "expose_check1"
+        interval  = "10s"
+        timeout   = "3s"
+        }
 
 }
 
