@@ -28,9 +28,6 @@ job "${service_name}" {
       port "expose_check2" {
         to = -1
       }
-      port "expose_check3" {
-        to = -1
-      }
     }
     service {
       name = "${service_name}"
@@ -56,12 +53,6 @@ job "${service_name}" {
                 local_path_port = ${port}
                 listener_port   = "expose_check2"
                 }
-              path {
-                path            = "/nifi-registry/"
-                protocol        = "http"
-                local_path_port = ${registry_port}
-                listener_port   = "expose_check3"
-                  }
                  }
           }
         }
@@ -90,15 +81,6 @@ job "${service_name}" {
         port      = "expose_check2"
         interval  = "10s"
         timeout   = "3s"
-        }
-
-      check {
-        name     = "nifi-registry-live"
-        type     = "http"
-        port     = "expose_check3"
-        path     = "/nifi-registry/"
-        interval = "10s"
-        timeout  = "2s"
         }
 }
 
