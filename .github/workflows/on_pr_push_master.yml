@@ -131,6 +131,7 @@ jobs:
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test-standalone
 
+
   release-prerequisites:
     if: |
       contains(github.event.pull_request.labels.*.name, 'major') ||
