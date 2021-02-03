@@ -2,7 +2,8 @@
 
 ## [0.4.1 UNRELEASED]
 ### Changed
-- Changed #34
+- Removed expose-test in `nifi.hcl` for service nifi-registry. #34
+- Refactored `on_pr_push_master.yml` (GitHub actions) with same structure as terraform-nifi-registry. #34
 
 ## [0.4.0]
 ### Added
