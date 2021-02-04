@@ -47,12 +47,7 @@ module "nifi_registry" {
     memory = 128
   }
 
-  vault_secret = {
-    vault_kv_policy_name    = "kv-secret",
-    vault_kv_path           = "secret/data/github",
-    vault_kv_field_user     = "git_access_user",
-    vault_kv_field_password = "git_access_password"
-  }
+
   # Git version control configuration
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
