@@ -67,8 +67,6 @@ variable "use_canary" {
   default     = false
 }
 
-
-
 # Nifi registry
 variable "registry_service" {
   type = object({

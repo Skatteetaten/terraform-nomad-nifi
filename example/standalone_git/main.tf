@@ -46,8 +46,6 @@ module "nifi_registry" {
     cpu    = 200
     memory = 128
   }
-
-
   # Git version control configuration
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
