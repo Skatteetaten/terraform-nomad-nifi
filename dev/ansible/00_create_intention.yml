@@ -2,16 +2,16 @@
   set_fact:
     consul_token: "{{ lookup('env', 'consul_master_token') }}"
 
-- name: Check if intention nifi_registry => nifi (allow) exists
-  shell: consul intention match -source nifi_registry
-  register: nifi_registry_intention
+- name: Check if intention nifi => nifi_registry (allow) exists
+  shell: consul intention match -source nifi
+  register: nifi_intention
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny'
   environment:
     CONSUL_HTTP_TOKEN: "{{ consul_token }}"
 
-- name: Consul create intention nifi_registry => nifi (allow)
-  shell: consul intention create nifi_registry  nifi
-  when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_registry_intention.stdout_lines == []
+- name: Consul create intention nifi => nifi_registry (allow)
+  shell: consul intention create nifi nifi_registry
+  when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_intention.stdout_lines == []
   environment:
     CONSUL_HTTP_TOKEN: "{{ consul_token }}"
 

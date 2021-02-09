@@ -69,7 +69,7 @@ In the examples, intentions are created in the Ansible playboook [00_create_inte
 
 | Intention between | type |
 | :---------------- | :--- |
-| nifi_registry => nifi | allow |
+| nifi => nifi_registry | allow |
 | nifi-local => nifi | allow |
 
 > :warning: Note that these intentions needs to be created if you are using the module in another module and (consul acl enabled with default policy deny).
