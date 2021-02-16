@@ -4,7 +4,7 @@
 
 - name: Check if intention nifi => nifi-registry (allow) exists
   shell: consul intention match -source nifi
-  register: nifi_registry
+  register: nifi_intention
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny'
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
@@ -13,7 +13,7 @@
 
 - name: Consul create intention nifi => nifi-registry (allow)
   shell: consul intention create nifi nifi-registry
-  when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_registry.stdout_lines == []
+  when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_intention.stdout_lines == []
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
     CONSUL_HTTP_TOKEN: "{{ consul_token }}"
