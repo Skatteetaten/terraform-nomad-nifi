@@ -1,6 +1,6 @@
 - name: set variable
   set_fact:
-    consul_token: "{{ lookup('env', 'consul_master_token') }}"
+    mode: "{{ mode }}"
 
 - name: Check if intention nifi => nifi-registry (allow) exists
   shell: consul intention match -source nifi
@@ -8,7 +8,7 @@
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny'
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
-    CONSUL_HTTP_TOKEN: "{{ consul_token }}"
+    CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
 
 
 - name: Consul create intention nifi => nifi-registry (allow)
@@ -16,7 +16,7 @@
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_intention.stdout_lines == []
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
-    CONSUL_HTTP_TOKEN: "{{ consul_token }}"
+    CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
 
 - name: Check if intention nifi-local => nifi (allow) exists
   shell: consul intention match -source nifi-local
@@ -24,11 +24,11 @@
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny'
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
-    CONSUL_HTTP_TOKEN: "{{ consul_token }}"
+    CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
 
 - name: Consul create intention nifi-local => nifi (allow)
   shell: consul intention create nifi-local nifi
   when: lookup('env', 'consul_acl') | bool and lookup('env', 'consul_acl_default_policy') == 'deny' and nifi_local_intention.stdout_lines == []
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
-    CONSUL_HTTP_TOKEN: "{{ consul_token }}"
+    CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
