@@ -1,7 +1,3 @@
-- name: set variable
-  set_fact:
-    mode: "{{ mode }}"
-
 - name: Check if intention nifi => nifi-registry (allow) exists
   shell: consul intention match -source nifi
   register: nifi_intention
