@@ -6,6 +6,8 @@
 - Refactored `on_pr_push_master.yml` (GitHub actions) with same structure as in `terraform-nomad-nifiregistry`. #34
 - Added new step to run `make test-standalone` for example/standalone in `.github/workflows/on_pr_push_master.yml`  #42
 - Deleted unused vault_secret variables  #57
+### Added
+- Create intentions from service-to-service: nifi=> nifi_registry (in Ansible playbook: /dev/Ansible) #53
 ## [0.4.0]
 ### Added
 - Customized Makefile to receive arguments for GitHub authentication #50

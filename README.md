@@ -63,7 +63,16 @@ You can also create proxy to connect with the Nifi registry service:
 make proxy-nifi-reg
 ```
 You can now visit the UI on [http://127.0.0.1:18080/nifi-registry/](http://127.0.0.1:18080/nifi-registry/).
+### Intentions
+Intentions are required when [consul acl is enabled and default_policy is deny](https://learn.hashicorp.com/tutorials/consul/access-control-setup-production#enable-acls-on-the-agents).
+In the examples, intentions are created in the Ansible playboook [00_create_intention.yml](dev/ansible/00_create_intention.yml):
 
+| Intention between | type |
+| :---------------- | :--- |
+| nifi => nifi_registry | allow |
+| nifi-local => nifi | allow |
+
+> :warning: Note that these intentions needs to be created if you are using the module in another module and (consul acl enabled with default policy deny).
 ### Providers
 - [Nomad](https://registry.terraform.io/providers/hashicorp/nomad/latest/docs)
 - [Vault](https://registry.terraform.io/providers/hashicorp/vault/latest/docs)
